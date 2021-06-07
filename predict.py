@@ -1,12 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-# 在我之前的博客中我们介绍了文本的多分类的方法,我们还尝试了各种分类模型,比如朴素贝叶斯、逻辑回归、支持向量机和随机森林等并且都取得了非常不错的效果。今天我们使用深度学习中的LSTM（Long Short-Term Memory）长短期记忆网络，它是一种时间循环神经网络，适合于处理和预测时间序列中间隔和延迟相对较长的重要事件。
-# LSTM 已经在科技领域有了多种应用。基于 LSTM 的系统可以学习翻译语言、控制机器人、图像分析、文档摘要、语音识别图像识别、手写识别、控制聊天机器人、预测疾病、点击率和股票、合成音乐等等任务。今天我们用它来实现一下文本多分类，相信会取得较好的效果。
-
-# # 数据
-#
-# 我们的数据来自于互联网，你可以在这里下载,数据中包含了10 个类别（书籍、平板、手机、水果、洗发水、热水器、蒙牛、衣服、计算机、酒店），共 6 万多条评论数据 首先查看一下我们的数据，这些数据都是来自于电商网站的用户评价数据,我们想要把不同评价数据分到不同的分类中去,且每条数据只能对应10个类中的一个类。
 #
 # 数据下载地址:https://github.com/SophonPlus/ChineseNlpCorpus/blob/master/datasets/online_shopping_10_cats/intro.ipynb
 #
@@ -16,6 +9,8 @@
 
 # coding=utf-8
 # get_ipython().run_line_magic('matplotlib', 'inline')
+import time
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -117,10 +112,18 @@ def predict(text):
 
 # In[ ]:
 
+t = time.time()
 
 print(predict('苹果好吃又不贵，已经买了很多次了'))
 
 print(predict('收到产品已经半个多月了，一开始用着不太好用，慢慢的就好使了，可能是习惯问题吧，主要是屏的分辨率真的不错。'))
+print(predict('这是第三次点评，纯粹是为了拿积分。没什么可以多说了，服务不错。'))
+
+t1 = time.time()
+
+t2 = t1-t
+print(t2)
+
 # In[ ]:
 
 
